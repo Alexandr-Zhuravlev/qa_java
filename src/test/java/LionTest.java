@@ -14,17 +14,19 @@ public class LionTest {
     @Mock
     Feline feline;
 
+    private final String sex = "Самец";
+
     @Test(expected = Exception.class)
     public void constructorWithIncorrectSexShouldThrowException() throws Exception {
         final String wrongSex = "Оно";
-        Lion lion = new Lion(wrongSex);
+        Lion lion = new Lion(feline, wrongSex);
 
     }
 
     @Test
-    public void getKittensLionShouldReturnKittensCount() {
+    public void getKittensLionShouldReturnKittensCount() throws Exception {
         final int kittenCount = 1;
-        Lion lion = new Lion(feline);
+        Lion lion = new Lion(feline, sex);
 
         Mockito.when(feline.getKittens()).thenReturn(kittenCount);
 
@@ -36,7 +38,7 @@ public class LionTest {
     public void getFoodLionShouldReturnListOfFood() throws Exception {
         final List<String> expectedResult = List.of("Животные", "Птицы", "Рыба");
         final String animalKind = "Хищник";
-        Lion lion = new Lion(feline);
+        Lion lion = new Lion(feline, sex);
 
         Mockito.when(feline.getFood(animalKind)).thenReturn(expectedResult);
 

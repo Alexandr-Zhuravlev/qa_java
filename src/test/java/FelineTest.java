@@ -1,20 +1,16 @@
 import com.example.Feline;
 import org.junit.Assert;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.mockito.Spy;
-import org.mockito.junit.MockitoJUnitRunner;
 import java.util.List;
 
-@RunWith(MockitoJUnitRunner.class)
+
 public class FelineTest {
 
-    @Spy
-    Feline feline;
 
     @Test
     public void getFamilyShouldReturnFelineFamily(){
         final String felineFamily = "Кошачьи";
+        Feline feline = new Feline();
 
         Assert.assertEquals(felineFamily, feline.getFamily());
     }
@@ -22,6 +18,7 @@ public class FelineTest {
     @Test
     public void getKittensFelineShouldReturnKittensCount() {
         final int kittenCount = 1;
+        Feline feline = new Feline();
 
         Assert.assertEquals(kittenCount, feline.getKittens());
     }
@@ -29,6 +26,7 @@ public class FelineTest {
     @Test
     public void getEatMeatShouldReturnFood() throws Exception {
         final List<String> expectedFood = List.of("Животные", "Птицы", "Рыба");
+        Feline feline = new Feline();
 
         Assert.assertEquals(expectedFood, feline.eatMeat());
     }
